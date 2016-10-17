@@ -13,7 +13,7 @@ export class CourseCardsComponent {
   }
 
     navigate(path) {
-
+        console.log("path", )
         this.router.navigate([{outlets: {primary: path, sidemenu:path}}], {relativeTo: this.route});
 
     }

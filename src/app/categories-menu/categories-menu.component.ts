@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-categories-menu',
@@ -8,14 +8,21 @@ import {ActivatedRoute} from "@angular/router";
 })
 export class SideMenuComponent implements OnInit {
 
-  constructor(route: ActivatedRoute) {
-
-      route.params.subscribe(params => console.log("side menu id parameter",params['id']));
+  id: string;
+  constructor(route: ActivatedRoute, private router: Router) {
+    route.params.subscribe(
+        (params) => this.id = params['id']
+    )
 
   }
 
   ngOnInit() {
 
+  }
+
+  nav(e, path){
+    e.preventDefault();
+    this.router.navigateByUrl(`/courses/(${path}//sidemenu:${path})`);
   }
 
 }

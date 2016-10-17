@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-course-category',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CoursesCategoryComponent implements OnInit {
 
-  constructor() { }
+  id: string;
+  constructor(private route: ActivatedRoute) {
+    route.params.subscribe(
+        (p) => this.id = p['id']
+    )
+  }
 
   ngOnInit() {
+
   }
 
 }
